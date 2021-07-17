@@ -1,6 +1,11 @@
 <?php 
 include "conf.php";
 
+if (isLoggedin() == false) {
+	logout();
+	die();
+}
+
 $url = $model_url."?table=data_vaksin";
 $json = file_get_contents($url);
 $arr = json_decode($json);
@@ -56,6 +61,7 @@ function generateGender($g) {
 						</tr>
 					</thead>
 					<tbody>
+						<?php if(!empty($arr)): ?>
 						<?php foreach ($arr as $val): ?>
 						<tr>
 							<th><?=$num++;?></th>
@@ -72,6 +78,7 @@ function generateGender($g) {
 							</th>
 						</tr>
 						<?php endforeach; ?>
+						<?php endif; ?>
 					</tbody>
 				</table>
 			</div>

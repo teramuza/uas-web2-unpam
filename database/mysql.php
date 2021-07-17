@@ -69,6 +69,23 @@ class MySqlDb {
         return $sql;
     }
 
+    static function checkData($table, $where) {
+        $myql = new MySqlDb();
+
+        $sql = "SELECT * FROM ".$table." WHERE ".$where;          
+        $sql = $myql->conn->query($sql);
+        $obj = new stdClass();
+        if(mysqli_num_rows($sql) > 0){
+            $sql = $sql->fetch_assoc();
+            $obj->success = true;
+            $obj->user_id = $sql['id'];
+            return $obj;
+        }else{
+            $obj->success = false;
+            return $obj;
+        }
+    }
+
     static function updateData($table, $update_value, $where){
         $myql = new MySqlDb();
 
@@ -85,7 +102,6 @@ class MySqlDb {
         $myql = new MySqlDb();
 
         $sql = "INSERT INTO ".$table." (".$columns.") VALUES (".$values.')';  
-        echo $sql;
         $sql = $myql->conn->query($sql);
         if($sql == true){
             return true;
