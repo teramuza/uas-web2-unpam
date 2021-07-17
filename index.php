@@ -43,6 +43,7 @@ function generateGender($g) {
 						</tr>
 					</thead>
 					<tbody>
+						<?php if(!empty($arr)): ?>
 						<?php foreach ($arr as $key=>$val): ?>
 						<tr>
 							<th><?=$num++;?></th>
@@ -54,6 +55,7 @@ function generateGender($g) {
 							<th><?=$val->phone_number;?></th>
 						</tr>
 						<?php endforeach; ?>
+						<?php endif; ?>
 					</tbody>
 				</table>
 			</div>
