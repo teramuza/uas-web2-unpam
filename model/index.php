@@ -63,7 +63,7 @@ if(isset($_POST['login'])) {
     unset($_POST);
     // Auth::login($object);
     $response = Auth::login($object);
-    header("HTTP/1.1 ".$response->status);
+    http_response_code($response->status);
     header('Content-Type: application/json');
     echo json_encode($response);
 }
