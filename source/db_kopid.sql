@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 16, 2021 at 01:34 PM
+-- Generation Time: Jul 17, 2021 at 09:02 AM
 -- Server version: 10.5.9-MariaDB
 -- PHP Version: 8.0.3
 
@@ -46,8 +46,7 @@ CREATE TABLE `data_vaksin` (
 --
 
 INSERT INTO `data_vaksin` (`id`, `district`, `faskes_type`, `faskes_name`, `identity_number`, `name`, `gender`, `age`, `birthday`, `phone_number`, `addr`) VALUES
-(1, 3674030, 1, 'Tangerang Selatan', 181011408, 'Teuku Raja Muhammad Zaki', 'l', 22, '1998-07-01', '089525512887', 'jalan kenangan 1000'),
-(2, 3674050, 3, 'Rempoa', 28282828, 'Tera', 'l', 20, '1998-07-01', '089525512887', 'jalan rempoa ');
+(16, 3171050, 3, 'Puskesmas Kebayoran', 18181818, 'Tera', 'l', 20, '2001-03-09', '0898989898989', 'Jalan Setia Budi 6');
 
 -- --------------------------------------------------------
 
@@ -7899,7 +7898,7 @@ INSERT INTO `regencies` (`id`, `province`, `name`) VALUES
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `username` varchar(25) NOT NULL,
-  `password` varchar(25) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -7908,8 +7907,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `name`) VALUES
-(1, 'tera', 'test123', 'Tera'),
-(2, 'tera', 'test123', 'Tera');
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Admin');
 
 --
 -- Indexes for dumped tables
@@ -7963,7 +7961,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `data_vaksin`
 --
 ALTER TABLE `data_vaksin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `faskes_types`
