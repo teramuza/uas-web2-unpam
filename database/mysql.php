@@ -90,6 +90,7 @@ class MySqlDb {
         $myql = new MySqlDb();
 
         $sql = "UPDATE ".$table." SET ".$update_value." WHERE ".$where;        
+        print_r($sql);
         $sql = $myql->conn->query($sql);
         if($sql == true){
             return true;

@@ -35,6 +35,7 @@ function generateGender($g) {
    		th.noPrint{
    			display: none;
    		}
+	}
     </style>
 </head>
 <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
@@ -44,10 +45,12 @@ function generateGender($g) {
 		<center><h3>Data Vaksinasi Covid-19</h3></center>
 		<div class="card">
 			<div class="card-header bg-success text-white ">
-				Data Peserta <a href="tambah.php" class="noPrint btn btn-sm btn-primary float-right">Tambah</a>
+				Data Peserta 
+				<a href="#" class="noPrint btn btn-sm btn-success float-right" onclick="window.print()">Cetak</a>
+				<a href="tambah.php" class="noPrint btn btn-sm btn-primary float-right">Tambah</a>
 			</div>
 			<div class="card-body">
-				<table class="table table-bordered">
+				<table class="table table-bordered" id="tableData">
 					<thead>
 						<tr>
 							<th>No</th>
@@ -72,9 +75,9 @@ function generateGender($g) {
 							<th><?=$val->age;?></th>
 							<th><?=$val->phone_number;?></th>
 							<th class="noPrint">
-								<a href="edit.php" class="noPrint btn-warning btn">Ubah</a>
-								<a href="hapus.php" class="noPrint btn-danger btn">Hapus</a>
-								<button type="button" class="noPrint btn btn-primary" value="Cetak Nota" onclick="window.print()">Cetak</button><br>
+								<a href="edit.php?id=<?=$val->id;?>" class="noPrint btn-warning btn">Ubah</a>
+								<button class="noPrint btn-danger btn" onclick="deleteRow(<?=$num;?>, <?=$val->id;?>)">Hapus</button>
+								<br>
 							</th>
 						</tr>
 						<?php endforeach; ?>
@@ -84,7 +87,29 @@ function generateGender($g) {
 			</div>
 		</div>
 	</div>
-<script type="text/javascript" src="assets/js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" language="javascript">
+		const deleteUrl = '<?=$model_url;?>?action=delete_data&id=';
+		const tableData = document.getElementById("tableData");
+
+		function deleteRow(index, id) {
+			let confirmUser = confirm("Apakah anda yakin ingin menghapus data ini?");
+			if (confirmUser) {
+				let xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange = () => {
+					console.log(xmlhttp);
+					if (xmlhttp.readyState === 4) {
+						const response = JSON.parse(xmlhttp.response);
+						if (response.success) {
+							tableData.deleteRow(index-1);
+						}
+					}
+				}
+				xmlhttp.open("GET", deleteUrl + id);
+				xmlhttp.send();
+			}
+		}
+	</script>
+	<script type="text/javascript" src="assets/js/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 </body>
 </html>
