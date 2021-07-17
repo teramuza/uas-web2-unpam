@@ -35,6 +35,7 @@ function generateGender($g) {
    		th.noPrint{
    			display: none;
    		}
+	}
     </style>
 </head>
 <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
