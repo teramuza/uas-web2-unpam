@@ -162,8 +162,8 @@ Berikut adalah tools yang digunakan selama proses pembuatan projek ini
 
 ## Contributor
 Thank you to those who have contributed to this final project.
-- @teramuza as backend developer and javascript developer
-- @winnimaeylani as frontend developer
+- [@teukuraja](https://github.com/teukuraja) as backend developer and javascript developer
+- [@winnimaeylani](https://githib.com/winnimaeylani) as frontend developer
 - and the other for encouragement and prayer support
 
 
