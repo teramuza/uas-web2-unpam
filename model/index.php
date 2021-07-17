@@ -53,6 +53,17 @@ if(isset($_GET['table'])) {
 if(isset($_POST['add_data'])) {
     unset($_POST['add_data']);
     $object = (object) $_POST;
-    var_dump($object);
+    unset($_POST);
     echo DataVaksin::createDataVaksin($object);
+}
+
+if(isset($_POST['login'])) {
+    unset($_POST['login']);
+    $object = (object) $_POST;
+    unset($_POST);
+    // Auth::login($object);
+    $response = Auth::login($object);
+    header("HTTP/1.1 ".$response->status);
+    header('Content-Type: application/json');
+    echo json_encode($response);
 }

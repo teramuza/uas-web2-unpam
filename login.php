@@ -1,3 +1,7 @@
+<?php
+    // session start();
+    if(!empty($_SESSION)){ }else{ session_start(); }
+?>
 <!DOCTYPE html>
 <html>
 <head>
