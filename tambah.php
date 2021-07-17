@@ -21,7 +21,6 @@ if (isset($_POST['add_data'])) {
 		echo '</script>';
 	}
 }
-
 ?>
 <!DOCTYPE html>
 <html>
