@@ -40,10 +40,11 @@ function generateGender($g) {
 							<th>Jenis Kelamin</th>
 							<th>Umur</th>
 							<th>No Hp</th>
+							<th>Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
-						<?php foreach ($arr as $key=>$val): ?>
+						<?php foreach ($arr as $val): ?>
 						<tr>
 							<th><?=$num++;?></th>
 							<th><?=$val->faskes_name;?></th>
@@ -52,6 +53,10 @@ function generateGender($g) {
 							<th><?=generateGender($val->gender);?></th>
 							<th><?=$val->age;?></th>
 							<th><?=$val->phone_number;?></th>
+							<th>
+								<a href="edit.php" class="btn-warning btn">Ubah Data</a>
+								<a href="hapus.php" class="btn-danger btn">Hapus Data</a>
+							</th>
 						</tr>
 						<?php endforeach; ?>
 					</tbody>
