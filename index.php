@@ -45,7 +45,9 @@ function generateGender($g) {
 		<center><h3>Data Vaksinasi Covid-19</h3></center>
 		<div class="card">
 			<div class="card-header bg-success text-white ">
-				Data Peserta <a href="tambah.php" class="noPrint btn btn-sm btn-primary float-right">Tambah</a>
+				Data Peserta 
+				<a href="#" class="noPrint btn btn-sm btn-success float-right" onclick="window.print()">Cetak</a>
+				<a href="tambah.php" class="noPrint btn btn-sm btn-primary float-right">Tambah</a>
 			</div>
 			<div class="card-body">
 				<table class="table table-bordered">
@@ -75,7 +77,7 @@ function generateGender($g) {
 							<th class="noPrint">
 								<a href="edit.php" class="noPrint btn-warning btn">Ubah</a>
 								<a href="hapus.php" class="noPrint btn-danger btn">Hapus</a>
-								<button type="button" class="noPrint btn btn-primary" value="Cetak Nota" onclick="window.print()">Cetak</button><br>
+								<br>
 							</th>
 						</tr>
 						<?php endforeach; ?>
