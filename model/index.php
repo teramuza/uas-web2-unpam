@@ -61,7 +61,6 @@ if(isset($_POST['login'])) {
     unset($_POST['login']);
     $object = (object) $_POST;
     unset($_POST);
-    // Auth::login($object);
     $response = Auth::login($object);
     http_response_code($response->status);
     header('Content-Type: application/json');
