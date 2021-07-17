@@ -6,6 +6,11 @@ if (isLoggedin() == false) {
 	die();
 }
 
+if (isset($_GET['logout'])) {
+	logout();
+	die();
+}
+
 $url = $model_url."?table=data_vaksin";
 $json = file_get_contents($url);
 $arr = json_decode($json);
@@ -37,20 +42,26 @@ function generateGender($g) {
    		}
 	}
     </style>
+    <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 </head>
-<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 <body>
 <noscript>You need to enable JavaScript to run this app.</noscript>
 	<div class="container col-md-10 mt-2">
-		<center><h3>Data Vaksinasi Covid-19</h3></center>
+		<?php
+		date_default_timezone_set('Asia/Jakarta');
+		echo '<center><h3>Daftar Peserta Vaksinasi Covid19</h3>
+			<h3>Per '.date('d F Y H:i:s').'</h3>
+		</center>'
+		?>
 		<div class="card">
 			<div class="card-header bg-success text-white ">
-				Data Peserta 
+				Data Peserta
 				<a href="#" class="noPrint btn btn-sm btn-success float-right" onclick="window.print()">Cetak</a>
 				<a href="tambah.php" class="noPrint btn btn-sm btn-primary float-right">Tambah</a>
 			</div>
 			<div class="card-body">
-				<table class="table table-bordered" id="tableData">
+				<table class="table table-striped table-bordered table-hover" id="dataTables-example">
 					<thead>
 						<tr>
 							<th>No</th>
@@ -84,12 +95,17 @@ function generateGender($g) {
 						<?php endif; ?>
 					</tbody>
 				</table>
+				<button type="button" class="noPrint btn btn-primary" onclick="onLogoutCLicked()">Logout</button>
 			</div>
 		</div>
 	</div>
 	<script type="text/javascript" language="javascript">
 		const deleteUrl = '<?=$model_url;?>?action=delete_data&id=';
-		const tableData = document.getElementById("tableData");
+		const tableData = document.getElementById("dataTables-example");
+
+		function onLogoutCLicked() {
+			window.location.href = "index.php?logout=1";
+		}
 
 		function deleteRow(index, id) {
 			let confirmUser = confirm("Apakah anda yakin ingin menghapus data ini?");
@@ -109,6 +125,7 @@ function generateGender($g) {
 			}
 		}
 	</script>
+	<script src="assets/js/dataTables/jquery.dataTables.js"></script>
 	<script type="text/javascript" src="assets/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 </body>
