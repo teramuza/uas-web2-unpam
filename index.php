@@ -1,6 +1,11 @@
 <?php 
 include "conf.php";
 
+if (isLoggedin() == false) {
+	logout();
+	die();
+}
+
 $url = $model_url."?table=data_vaksin";
 $json = file_get_contents($url);
 $arr = json_decode($json);

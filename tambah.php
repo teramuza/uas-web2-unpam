@@ -1,5 +1,11 @@
 <?php
 include "conf.php";
+
+if (isLoggedin() == false) {
+	logout();
+	die();
+}
+
 if (isset($_POST['add_data'])) {
 	$curl = curl_init($model_url);
 	curl_setopt($curl, CURLOPT_POST, true);

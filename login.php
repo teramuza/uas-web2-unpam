@@ -1,6 +1,34 @@
 <?php
-    // session start();
-    if(!empty($_SESSION)){ }else{ session_start(); }
+    include "conf.php";
+
+	if(isLoggedin() === true) {
+		header("Location: index.php");
+		die();
+	}
+
+	if (isset($_POST['login'])) {
+		$curl = curl_init($model_url);
+		curl_setopt($curl, CURLOPT_POST, true);
+		curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($_POST));
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		$response = curl_exec($curl);
+		curl_close($curl);
+		$response = json_decode($response);
+		if ($response->status === 200) {
+			$_SESSION['user_id'] = $response->user_id;
+			$_SESSION['is_loggedin'] = true;
+			header("Location: index.php");
+		} else {
+			if (!empty($response->message)) {
+				$message = $response->message;
+			} else {
+				$message = 'Login gagal!';
+			}
+			echo '<script language="javascript">';
+			echo 'alert("'.$message.'")';
+			echo '</script>';
+		}
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,13 +46,13 @@
 				<form action="" method="post" role="form">
 					<div class="form-group">
 						<label>Username</label>
-						<input class="form-control" type="text" name="" placeholder="Masukan Username" required="">
+						<input class="form-control" type="text" name="username" placeholder="Masukan Username" required>
 					</div>
 					<div class="form-group">
 						<label>Password</label>
-						<input class="form-control" type="password" name="" placeholder="Masukan Password" required="">
+						<input class="form-control" type="password" name="password" placeholder="Masukan Password" required>
 					</div>
-					<button type="submit" class="btn btn-success" name="submit" value="simpan">Login</button>
+					<button type="submit" class="btn btn-success" name="login" value="simpan">Login</button>
 				</form>
 			</div>
 		</div>
