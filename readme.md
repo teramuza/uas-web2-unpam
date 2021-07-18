@@ -163,16 +163,16 @@ Berikut adalah tools yang digunakan selama proses pembuatan projek ini
 ## Contributor
 Thank you to those who have contributed to this final project.
 - [@teukuraja](https://github.com/teukuraja) as backend developer and javascript developer
-- [@winnimaeylani](https://githib.com/winnimaeylani) as frontend developer
+- [@winnimaeylani](https://github.com/winnimaeylani) as frontend developer
 - and the other for encouragement and prayer support
 
 
 ## Anggota Kelompok 6 & Contributors
 | NIM | Nama |
 |---| --- |
-| 181011401508 | TEUKU RAJA MUHAMMAD ZAKI |
+| 181011401508  | TEUKU RAJA MUHAMMAD ZAKI |
 | 181011401293	|	WINNI MAEYLANI |
 | 181011402479	|	RAMA MAULANA |
-|181011402401	|	VYKA SEPTIANI |
+| 181011402401	|	VYKA SEPTIANI |
 | 181011401068	|	SITI AISAH|
-| 181011402378 | WILLY PUTRA LESMANA |
+| 181011402378  | WILLY PUTRA LESMANA |
